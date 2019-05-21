@@ -9,18 +9,9 @@
       Start Game
     </button>
     <div class="counters-container">
-      <div class="counter">
-        <h2>Score:</h2>
-        <h1>0</h1>
-      </div>
-      <div class="counter">
-        <h2>High Score:</h2>
-        <h1>0</h1>
-      </div>
-      <div class="counter">
-        <h2>Timer:</h2>
-        <h1>0</h1>
-      </div>
+      <Counter></Counter>
+      <Counter></Counter>
+      <Counter></Counter>
     </div>
     <div class="moles-container gameActive">
       <div class="mole-container inactive">
@@ -52,8 +43,12 @@
 </template>
 
 <script>
+import Counter from './components/Counter';
 export default {
   name: 'App',
+  components: {
+    Counter,
+  }
 };
 </script>
 
@@ -77,15 +72,6 @@ export default {
 .counters-container {
   display: flex;
   justify-content: space-evenly;
-}
-.counter {
-  border: 1px solid #000;
-  margin-top: 20px;
-  padding: 20px;
-}
-.counter h1,
-.counter h2 {
-  margin: 0;
 }
 .moles-container {
   margin-top: 20px;
