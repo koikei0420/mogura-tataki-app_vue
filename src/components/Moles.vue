@@ -1,27 +1,34 @@
 <template>
-    <div v-bind:class="classNames">
-        <Mole
-            v-for="(moleState, idx) in moleData"
-            v-bind:key="idx"
-            v-bind:active="moleState"
-        ></Mole>
-    </div>
+  <div v-bind:class="classNames">
+    <Mole
+      v-for="(moleState, idx) in moleData"
+      v-bind:key="idx"
+      v-bind:active="moleState"
+      v-bind:moleId="idx"
+      v-on:whack="handleWhack"
+    ></Mole>
+  </div>
 </template>
 
 <script>
 import Mole from './Mole';
 export default {
-    name: 'Moles',
-    comments: {
-        Mole,
+  name: 'Moles',
+  comments: {
+    Mole,
+  },
+  props: ['moleData', 'gameActive'],
+  methods: {
+    handleWhack: function() {
+      this.$emit('whack', moleId);
     },
-    props: ['moleData', 'gameActive'],
-    computed: function() {
-        return {
-            'moles-container': true,
-            'game-active': this.gameActive,
-        };
-    },
+  },
+  computed: function() {
+    return {
+      'moles-container': true,
+      'game-active': this.gameActive,
+    };
+  },
 };
 </script>
 
