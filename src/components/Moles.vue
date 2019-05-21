@@ -6,6 +6,7 @@
       v-bind:active="moleState"
       v-bind:moleId="idx"
       v-on:whack="handleWhack"
+      v-on:miss="handleMiss"
     ></Mole>
   </div>
 </template>
@@ -19,8 +20,11 @@ export default {
   },
   props: ['moleData', 'gameActive'],
   methods: {
-    handleWhack: function() {
+    handleWhack: function(moleId) {
       this.$emit('whack', moleId);
+    },
+    handleMiss: function() {
+      this.$emit('miss');
     },
   },
   computed: {
