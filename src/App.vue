@@ -57,6 +57,10 @@ export default {
       this.gameActive = false;
       this.stopTimer();
       this.stopMoles();
+      this.updateHighScore();
+    },
+    updateHighScore() {
+      this.highScore = Math.max(this.highScore, this.score);
     },
     startTimer: function() {
       this.timerId = setInterval( () => {
@@ -91,7 +95,7 @@ export default {
     },
     activateMole: function(moleId) {
       this.toggleMole(moleId, true);
-      setTimeout(() => this.deactivateMole(moleId, 1500));
+      setTimeout(() => this.deactivateMole(moleId), 1500);
     },
     deactivateMole: function(moleId) {
       this.toggleMole(moleId, false);
