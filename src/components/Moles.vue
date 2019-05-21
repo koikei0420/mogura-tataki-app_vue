@@ -14,7 +14,7 @@
 import Mole from './Mole';
 export default {
   name: 'Moles',
-  comments: {
+  components: {
     Mole,
   },
   props: ['moleData', 'gameActive'],
@@ -23,11 +23,13 @@ export default {
       this.$emit('whack', moleId);
     },
   },
-  computed: function() {
-    return {
-      'moles-container': true,
-      'game-active': this.gameActive,
-    };
+  computed: {
+    classNames: function() {
+      return {
+        'moles-container': true,
+        'game-active': this.gameActive,
+      };
+    },
   },
 };
 </script>

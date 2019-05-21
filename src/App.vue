@@ -24,7 +24,7 @@
 
 <script>
 import Counter from './components/Counter';
-import Moles from './components/Moles'
+import Moles from './components/Moles';
 
 export default {
   name: 'App',
@@ -41,7 +41,7 @@ export default {
       gameActive: false,
     };
   },
-  methosd: {
+  methods: {
     resetState: function() {
       this.score = 0;
       this.timer = 20;
@@ -84,7 +84,7 @@ export default {
         this.activateMole(randomMoleIndex);
       }
     },
-    toggleMole: function() {
+    toggleMole: function(moleId, shouldShow) {
       const moles = this.moles.slice();
       moles[moleId] = shouldShow;
       this.moles = moles;
@@ -93,7 +93,7 @@ export default {
       this.toggleMole(moleId, true);
       setTimeout(() => this.deactivateMole(moleId, 1500));
     },
-    deactivateMole: function() {
+    deactivateMole: function(moleId) {
       this.toggleMole(moleId, false);
     },
     handleMoleWhack: function(moleId) {
