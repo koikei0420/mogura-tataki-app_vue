@@ -1,5 +1,5 @@
 <template>
-    <div class="mole-container inactive">
+    <div v-bind:class="classNames">
         <div class="mole-image-containe">
             <img class="mole" src="../assets/mole.png" alt='mole'/>
         </div>
@@ -10,6 +10,16 @@
 <script>
 export default {
     name: 'Mole',
+    props: ['active', 'moleId'],
+    computed: {
+        classNames: function() {
+            return {
+                'mole-container': true,
+                'active': this.active,
+                'inactive': !this.active,
+            };
+        },
+    },
 };
 </script>
 
